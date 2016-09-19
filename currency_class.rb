@@ -14,7 +14,7 @@ class Currency
   end
 
   def !=(other)
-    self.amount != other.amount && self.code != other.code
+    self.amount != other.amount || self.code != other.code
   end
 
   def +(other)
