@@ -1,30 +1,45 @@
+#Difficulties:
+#Problem calling the convert method on currency_object.
+#The class of a variable set to equal CurrencyConverter.new(var_from_Currency) returned as a class.
+#I expected the class to return a new amount and currency code.
+#Did not know how to test the methods in an informed, intentional manner.
+
+#I learned:
+#How to use require_relative
+#That an effective testing tool would allow me to be more procedural.
+#A hash of hashes works better here than an array of hashes
+#That I need to research how to call methods in different contexts.
+
 class UnknownCurrencyCodeError < StandardError
 end
+require_relative 'currency_class'
+class CurrencyConverter < Currency
+  attr_reader :new_currency
 
-class CurrencyConverter
-  attr_reader :currency_object :desired_code :new_currency
-
-  def initialize()
-    @conversion_rates = {'USD' => {'EUR' => 0.89, 'JPY' => 0.24}}
-    # puts conversion_rates["USD"]
+  def initialize(currency_object)
+    @currency_object = currency_object
+    @conversion_rates = {
+      USD: {
+        EUR: 0.894726,
+        JPN: 101.818
+      },
+      EUR: {
+        USD: 1.117,
+        JPN: 113.774
+      },
+      JPN: {
+        USD: 0.00982184,
+        EUR: 0.00879
+      }
+    }
   end
 
-  def convert(currency_object, desired_code)
-    code = currency_object.code
-    amount = currency_object.amount
-    conversion_rate = @conversion_rates[code][desired_code]
+  def convert(exchange)
+    code = @currency_object.code
+    amount = @currency_object.amount
+    conversion_rate = @conversion_rates[code][exchange]
     new_amount = conversion_rate * amount
-    new_currency = Currency.new(new_amount,desired_code)
+    new_currency = Currency.new(new_amount, exchange)
     return new_currency
   end
-    #variable.amount
 end
-
-# conversion_rate = [
-#   {'USD' => 1.00, 'EUR' => 0.89},
-#   {'USD' => 1.00, 'JYP' => 0.89},
-#   {'EUR' => 1.00, 'USD' => 1.11},
-#   {'EUR' => 1.00, 'JYP' => 113.77},
-#   {'JPY' => 1.00, 'USD' => 0.0098},
-#   {'JPY' => 1.00, 'EUR' => 0.0088}
-#   ]

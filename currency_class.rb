@@ -5,8 +5,22 @@ class Currency
   attr_reader :amount, :code
 
   def initialize(amount, code)
-    @amount = amount
+    amount = amount.split('')
+
+    if amount[0] == "$"
+      code = "USD"
+    elsif amount[0] == "¥"
+      code = "JPY"
+    elsif amount[0] == "€"
+      code = "EUR"
+
+    if amount[0] == "$" || amount[0] == "¥" || amount[0] == "€"
+      amount.delete[0]
+    end
+    
+    @amount = amount.join
     @code = code
+
   end
 
   def ==(other)
