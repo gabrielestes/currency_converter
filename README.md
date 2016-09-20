@@ -10,13 +10,13 @@
 
 ####The program then requires the three-letter code of the currency the user would like the money to be converted to.
 
-####The user's answer is iterated through stored conversion rates to provide the converted amount to the desired currency.
+####The user's answer is iterated through a data set of conversion rates in order to provide the equivalent amount based on their desired currency.
 
 ---
 
 ##Code
 
-####The following is code that was written with the intention to call the *convert* method on a variable assigned an amount and currency code. The desired exchange would be called inside the method, outputting the new amount and currency after the exchange.
+####The following is code that was written with the intention to call the *convert* method on a variable assigned an amount and its currency code. The user's desired exchange would be called inside the method, outputting the new amount and currency after the exchange.
 
 ```Ruby
 def convert(exchange)
