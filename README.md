@@ -6,7 +6,7 @@
 
 ####This program takes two values from the user:
 ####1. An amount of money.
-####2. The the money's currency.
+####2. The money's currency code.
 
 ####The program then requires the three-letter code of the currency the user would like the money to be converted to.
 
